@@ -22,7 +22,7 @@
 3. Add the following secrets using the **New secret** button:
 
     - **GH_TOKEN:** The GitHub token generated above.
-    - **GIST_ID:** The ID portion from your gist url: `https://gist.github.com/yg/`**`387aeb084c3433e24a11b36660ba9937`**.
+    - **GIST_ID:** The ID portion from your gist url: `https://gist.github.com/bokub/`**`387aeb084c3433e24a11b36660ba9937`**.
     - **ALL_COMMITS:** Boolean value, If `true` it will count all commits instead of last year commits
 
 4. Go to the **Actions** tab of your fork

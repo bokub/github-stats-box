@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+'use strict';
+
 require('dotenv').config();
 const { GistBox } = require('gist-box');
 const { userInfoFetcher, totalCommitsFetcher } = require('./fetch');

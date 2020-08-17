@@ -1,12 +1,25 @@
 {
     "name": "github-stats-box",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Update a gist to contain your GitHub stats",
     "author": "bokub",
     "license": "MIT",
+    "repository": "bokub/github-stats-box",
+    "main": "index.js",
     "scripts": {
         "prettier": "prettier --write **/*.{js,md,json,yml}"
     },
+    "bin": {
+        "github-stats-box": "index.js"
+    },
+    "keywords": [
+        "gist",
+        "pinned",
+        "action",
+        "github",
+        "stats",
+        "box"
+    ],
     "dependencies": {
         "axios": "^0.19.2",
         "dotenv": "8.2.0",
