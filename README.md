@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="screenshot.png">
+  <a href="https://gist.github.com/bokub/387aeb084c3433e24a11b36660ba9937">
+    <img src="https://user-images.githubusercontent.com/17952318/90407883-52b56000-e0a7-11ea-9da4-d9fac75372c1.png">
+  </a>
   <h3 align="center">github-stats-box</h3>
   <p align="center">⚡️📌 Update a pinned gist to contain your GitHub stats</p>
 </p>
@@ -10,7 +12,7 @@
 
 ### Prep work
 
-1. [Create a new public GitHub Gist](https://gist.github.com/new) (the Gist description will be displayed on top of your pinned Gist)
+1. [Create a new public GitHub Gist](https://gist.github.com/new) (the gist description will be displayed on top of your pinned Gist)
 2. [Create a token](https://github.com/settings/tokens/new) with the `gist` scope and copy it
 
 ### Project setup
@@ -20,7 +22,7 @@
 3. Add the following secrets using the **New secret** button:
 
     - **GH_TOKEN:** The GitHub token generated above.
-    - **GIST_ID:** The ID portion from your gist url: `https://gist.github.com/yg/`**`a582ad10a45dc17815feea6018223880`**.
+    - **GIST_ID:** The ID portion from your gist url: `https://gist.github.com/yg/`**`387aeb084c3433e24a11b36660ba9937`**.
     - **ALL_COMMITS:** Boolean value, If `true` it will count all commits instead of last year commits
 
 4. Go to the **Actions** tab of your fork
