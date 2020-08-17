@@ -1,0 +1,20 @@
+{
+    "name": "github-stats-box",
+    "version": "0.1.0",
+    "description": "Update a gist to contain your GitHub stats",
+    "author": "bokub",
+    "license": "MIT",
+    "scripts": {
+        "prettier": "prettier --write **/*.{js,md,json,yml}"
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "dotenv": "8.2.0",
+        "gist-box": "^0.3.1"
+    },
+    "devDependencies": {
+        "prettier": "2.0.5",
+        "@bokub/prettier-config": "1.0.1"
+    },
+    "prettier": "@bokub/prettier-config"
+}
