@@ -2,7 +2,7 @@
 'use strict';
 
 require('dotenv').config();
-const { GistBox } = require('gist-box');
+const { request } = require('@octokit/request');
 const { userInfoFetcher, totalCommitsFetcher } = require('./fetch');
 
 const gistId = process.env.GIST_ID;
@@ -61,20 +61,33 @@ async function updateGist(stats) {
             })
             .join('\n') + '\n';
 
-    try {
-        const box = new GistBox({ id: gistId, token: githubToken });
-        await box.update({
-            filename: `${stats.name}'s GitHub Stats`,
-            description: 'Generated',
-            content: gistContent,
-        });
-    } catch (error) {
-        console.error(`Unable to update gist\n${error}`);
+    const gist = await request('GET /gists/:gist_id', {
+        gist_id: gistId,
+        headers: { authorization: `token ${githubToken}` },
+    });
+    const filename = Object.keys(gist.data.files)[0];
+
+    if (gist.data.files[filename].content === gistContent) {
+        console.info('Nothing to update');
+        return;
     }
 
-    console.info(`Updated Gist ${gistId} with the following content:\n${gistContent}`);
+    return request('PATCH /gists/:gist_id', {
+        files: {
+            [filename]: {
+                filename: `${stats.name}'s GitHub Stats`,
+                content: gistContent,
+            },
+        },
+        gist_id: gistId,
+        headers: { authorization: `token ${githubToken}` },
+    }).then(() => {
+        console.info(`Updated Gist ${gistId} with the following content:\n${gistContent}`);
+    });
 }
 
 (async () => {
-    await main();
+    await main().catch((err) => {
+        console.error(err);
+    });
 })();
