@@ -10,8 +10,20 @@ const githubToken = process.env.GH_TOKEN;
 const countAllCommits = process.env.ALL_COMMITS.toString() === 'true';
 
 async function main() {
-    const stats = await getStats();
-    await updateGist(stats);
+    if (!githubToken) {
+        throw new Error('GH_TOKEN is not defined');
+    }
+    let stats;
+    try {
+        stats = await getStats();
+    } catch (e) {
+        throw new Error(`cannot retrieve statistics: ${e.message}`);
+    }
+    try {
+        await updateGist(stats);
+    } catch (e) {
+        throw new Error(`cannot update gist: ${e.message}`);
+    }
 }
 
 async function getStats() {
@@ -86,8 +98,7 @@ async function updateGist(stats) {
     });
 }
 
-(async () => {
-    await main().catch((err) => {
-        console.error(err);
-    });
-})();
+main().catch((err) => {
+    console.error(err.message);
+    process.exit(1);
+});
