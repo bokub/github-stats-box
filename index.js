@@ -4,10 +4,12 @@
 require('dotenv').config();
 const { request } = require('@octokit/request');
 const { userInfoFetcher, totalCommitsFetcher } = require('./fetch');
+const numeral = require('numeral');
 
 const gistId = process.env.GIST_ID;
 const githubToken = process.env.GH_TOKEN;
 const countAllCommits = process.env.ALL_COMMITS.toString() === 'true';
+const kFormat = process.env.K_FORMAT.toString() === 'true';
 
 async function main() {
     if (!githubToken) {
@@ -55,12 +57,12 @@ async function getStats() {
 }
 
 async function updateGist(stats) {
-    const humanize = (n) => (n > 999 ? (n / 1000).toFixed(1) + 'k' : n);
+    const humanize = (n) => (n >= 1000 ? numeral(n).format(kFormat ? '0.0a' : '0,0') : n);
 
     const gistContent =
         [
             ['⭐', `Total Stars`, humanize(stats.totalStars)],
-            ['➕', countAllCommits ? 'Total Commits' : 'Past Year Commits', humanize(stats.totalCommits)],
+            ['✔️', countAllCommits ? 'Total Commits' : 'Past Year Commits', humanize(stats.totalCommits)],
             ['🔀', `Total PRs`, humanize(stats.totalPRs)],
             ['🚩', `Total Issues`, humanize(stats.totalIssues)],
             ['📦', `Contributed to`, humanize(stats.contributedTo)],

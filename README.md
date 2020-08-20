@@ -26,5 +26,6 @@
 
     - **GIST_ID:** The ID portion from your gist url: `https://gist.github.com/bokub/`**`1cc900d92b9acc15786d7553b46a2cdf`**.
     - **ALL_COMMITS:** Boolean value, If `true` it will count all commits instead of last year commits
+    - **K_FORMAT:** Boolean value, If `true`, large numbers values will be formatted with a "k", for example `1.5k`
 
 That's it! You gist will be updated immediately, and every hour after that

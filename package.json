@@ -1,6 +1,6 @@
 {
     "name": "github-stats-box",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "description": "Update a gist to contain your GitHub stats",
     "author": "bokub",
     "license": "MIT",
@@ -23,7 +23,8 @@
     "dependencies": {
         "@octokit/request": "^5.4.7",
         "axios": "^0.19.2",
-        "dotenv": "8.2.0"
+        "dotenv": "8.2.0",
+        "numeral": "^2.0.6"
     },
     "devDependencies": {
         "prettier": "2.0.5",
