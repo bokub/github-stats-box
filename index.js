@@ -9,6 +9,7 @@ const numeral = require('numeral');
 const gistId = process.env.GIST_ID;
 const githubToken = process.env.GH_TOKEN;
 const countAllCommits = process.env.ALL_COMMITS.toString() === 'true';
+const countPrivate = process.env.COUNT_PRIVATE.toString() === 'true';
 const kFormat = process.env.K_FORMAT.toString() === 'true';
 
 async function main() {
@@ -51,6 +52,9 @@ async function getStats() {
     stats.totalCommits = user.contributionsCollection.totalCommitContributions;
     if (countAllCommits) {
         stats.totalCommits = await totalCommitsFetcher(user.login, githubToken);
+    }
+    if (countPrivate) {
+        stats.totalCommits += user.contributionsCollection.restrictedContributionsCount;
     }
 
     return stats;
