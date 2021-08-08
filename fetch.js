@@ -15,6 +15,7 @@ const userInfoFetcher = (token) => {
                   login
                   contributionsCollection {
                     totalCommitContributions
+                    restrictedContributionsCount
                   }
                   repositoriesContributedTo(first: 1, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY]) {
                     totalCount
