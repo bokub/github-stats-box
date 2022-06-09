@@ -28,4 +28,4 @@
     - **ALL_COMMITS:** Boolean value, If `true` it will count all commits instead of last year commits
     - **K_FORMAT:** Boolean value, If `true`, large numbers values will be formatted with a "k", for example `1.5k`
 
-That's it! You gist will be updated immediately, and every 12 hours after that
+That's it! You gist will be updated immediately, and every 12 hours after that 
