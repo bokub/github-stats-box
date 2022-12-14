@@ -1,4 +1,4 @@
-name: Update Github Stats Gist
+name: Update GitHub Stats Gist
 on:
     workflow_dispatch:
     schedule:
@@ -9,10 +9,17 @@ jobs:
     run:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/setup-node@v1
+            - uses: actions/setup-node@master
               with:
-                  node-version: 12
-            - run: npx github-stats-box
+                  node-version: 16
+            # If you edit the .js files and want to run them in your GitHub Action, you need to:
+            # - uncomment the 2 following lines
+            # - replace "npx github-stats-box@1" with "npm start"
+            # N.B: Your action will not receive future updates if you do so
+
+            # - uses: actions/checkout@master
+            # - run: npm ci
+            - run: npx github-stats-box@1
               env:
                   GH_TOKEN: ${{ secrets.GH_TOKEN }} # Do not edit, defined in secrets
 
